@@ -1,5 +1,6 @@
 from File import File
 
+
 class Dir:
     def __init__(self, name: str, parent):
         self.parent: Dir = parent
@@ -27,6 +28,8 @@ class Dir:
         return size
 
     def __str__(self) -> str:
-        if self.parent == None or self.parent.name == "/":
+        if self.parent is None:
+            return self.name
+        if self.parent.name == "/":
             return self.name
         return f"{self.parent}/{self.name}"

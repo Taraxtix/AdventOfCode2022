@@ -1,6 +1,7 @@
 from Dir import Dir
 
-def cd(dir_name:str, current_dir: Dir):
+
+def cd(dir_name: str, current_dir: Dir):
     if dir_name == "..":
         print("returned to parent dir")
         return current_dir.parent
@@ -18,7 +19,6 @@ def ls(results: list[str], current_dir):
         else:
             current_dir.add_file(result)
             print(f"Added file : {result[1]}")
-
 
 
 def parse_command(command: list[str], current_dir: Dir):
@@ -60,7 +60,7 @@ def every_sub_dirs(dir: Dir):
 def main(filename):
     commands = parse_file(filename)
 
-    current_dir: DIR = Dir("/", None)
+    current_dir: Dir = Dir("/", None)
     root: Dir = current_dir
 
     for command in commands[1:]:
@@ -73,6 +73,7 @@ def main(filename):
 
     space_needed = 30000000 - (70000000 - root.get_total_size())
     print(f"Part2 = {min([dir.get_total_size() for dir in all_dirs if dir.get_total_size() >= space_needed])}")
+
 
 if __name__ == "__main__":
     main('input.txt')
